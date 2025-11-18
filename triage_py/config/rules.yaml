@@ -1,0 +1,20 @@
+Billing:
+  - refund
+  - charged twice
+  - overcharged
+Tech:
+  - wifi
+  - error
+  - login
+Account:
+  - reset password
+  - verification
+Fraud:
+  - suspicious
+  - unauthorized
+Shipping:
+  - shipping
+  - address
+Returns:
+  - return
+  - defective

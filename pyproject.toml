@@ -1,0 +1,27 @@
+[project]
+name = "triage-py-project"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aiolimiter>=1.2.1",
+    "annotated-doc>=0.0.3",
+    "anyio>=4.11.0",
+    "cachetools>=6.2.1",
+    "embed>=0.3.0",
+    "fastapi>=0.115.0",
+    "httpx>=0.28.1",
+    "langchain>=0.2.5",
+    "langchain-community>=0.2.5",
+    "langchain-openai>=0.1.14",
+    "numpy>=1.26.4",
+    "pybreaker>=1.4.1",
+    "pydantic>=2.7,<3",
+    "pytest>=9.0.0",
+    "pyyaml>=6.0.3",
+    "sentence-transformers>=3.4.1",
+    "starlette>=0.40.0",
+    "tenacity>=8.5.0",
+    "uvicorn[standard]>=0.38.0",
+]

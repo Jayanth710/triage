@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+httpx
+pydantic>=2.7,<3
+PyYAML
+cachetools
+aiolimiter
+tenacity
+pybreaker
+anyio
+# LangChain & embeddings (optional but enabled if available)
+langchain
+langchain-openai
+langchain-community
+faiss-cpu
+sentence-transformers
+numpy
