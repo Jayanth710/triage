@@ -60,7 +60,7 @@ if EmbeddingRouterLC is not None:
         log.warning(f"Embedding router disabled: {e}")
 
 # LLM (optional, requires OPENAI_API_KEY)
-print(os.getenv("OPENAI_API_KEY"))
+# print(os.getenv("OPENAI_API_KEY"))
 if LangChainLlmClient is not None and os.getenv("OPENAI_API_KEY"):
     try:
         lc_client = LangChainLlmClient(allowed_labels=["Billing","Tech","Account","Fraud","Shipping","Returns","General"])
