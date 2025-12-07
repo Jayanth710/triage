@@ -1,4 +1,12 @@
-# Python-generated files
+# --- OS / Mac Metadata ---
+.DS_Store
+
+# --- Editor / IDE Settings ---
+# Ignores local user settings (like settings.json in your screenshot)
+.vscode/
+.idea/
+
+# --- Python Generated Files ---
 __pycache__/
 *.py[oc]
 build/
@@ -6,6 +14,16 @@ dist/
 wheels/
 *.egg-info
 
-# Virtual environments
-.venv
+# --- Virtual Environments ---
+.venv/
 .env
+
+# --- Testing & Coverage (Important for your project) ---
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# --- Tool Caches (Optional but recommended) ---
+.mypy_cache/
+.ruff_cache/
