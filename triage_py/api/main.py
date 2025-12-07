@@ -41,18 +41,49 @@ pipeline = Pipeline([LanguageDetector(), PiiScrubber(), Normalizer(512)])
 rules_path = os.getenv("TRIAGE_RULES_PATH", "config/rules.yaml")
 rules = RuleBasedRouter(rules_path)
 
+exemplars = [
+    # Billing
+    ("I was charged twice for my order", "Billing"),
+    ("there is an unexpected charge on my credit card from your service", "Billing"),
+    ("please refund me, the amount billed is incorrect", "Billing"),
+    ("my invoice total is higher than the price shown on your website", "Billing"),
+
+    # Tech
+    ("cannot connect to wifi on my device", "Tech"),
+    ("the app keeps crashing when I open it", "Tech"),
+    ("I am seeing an error code when I try to sign in", "Tech"),
+    ("the website does not load on my browser but other sites work", "Tech"),
+
+    # Account
+    ("reset my password verification code not received", "Account"),
+    ("I forgot my password and cannot log into my account", "Account"),
+    ("I want to change the email address on my profile", "Account"),
+    ("two factor authentication is blocking me from accessing my account", "Account"),
+
+    # Fraud
+    ("suspicious activity report and account locked", "Fraud"),
+    ("I see transactions I did not make on my account", "Fraud"),
+    ("I received login alerts from places I have never been", "Fraud"),
+    ("I think someone else has taken over my account", "Fraud"),
+
+    # Shipping
+    ("update my shipping address", "Shipping"),
+    ("my package has not arrived and tracking has not updated", "Shipping"),
+    ("the tracking number you sent does not work", "Shipping"),
+    ("I entered the wrong delivery address and need to change it", "Shipping"),
+
+    # Returns
+    ("return my product it is defective", "Returns"),
+    ("the item I received is damaged and I want to send it back", "Returns"),
+    ("I want to exchange this item for a different size", "Returns"),
+    ("the product does not match the description and I want a refund", "Returns"),
+]
+
 # Embeddings (optional, FAISS + HF embeddings via LangChain)
 if EmbeddingRouterLC is not None:
     try:
         embed_router = EmbeddingRouterLC(
-            exemplars=[
-                ("I was charged twice for my order", "Billing"),
-                ("cannot connect to wifi on my device", "Tech"),
-                ("reset my password verification code not received", "Account"),
-                ("suspicious activity report and account locked", "Fraud"),
-                ("update my shipping address", "Shipping"),
-                ("return my product it is defective", "Returns"),
-            ],
+            exemplars=exemplars,
             threshold=0.62
         )
         log.info("EmbeddingRouterLC initialized.")
